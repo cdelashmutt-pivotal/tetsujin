@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * Created by cdelashmutt on 2/22/17.
  */
-//@Component
 @ConfigurationProperties(prefix = "cf")
 public class CFProperties {
 	private String username;

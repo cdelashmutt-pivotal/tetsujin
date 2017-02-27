@@ -1,0 +1,14 @@
+resources:
+  - name: repo
+    type: git
+    source:
+      uri: https://github.com/cdelashmutt-pivotal/tetsujin
+      branch: master
+
+jobs:
+- name: assemble
+  plan:
+    - get: repo
+      trigger: true
+    - task: build
+      file: repo/ci/build.yml

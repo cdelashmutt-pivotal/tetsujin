@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome</title>
+	<!-- Bootstrap core CSS -->
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<span class="navbar-brand">Tetsujin</span>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+					<li><a href="#admin" role="tab" data-toggle="tab">Admin</a></li>
+					<li><a href="#contact" role="tab" data-toggle="tab">Contact</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="home">
+			<div class="jumbotron">
+				<div class="container">
+
+					<h1>Tetsujin</h1>
+					<p class="lead">Use Tetsujin to help manage the CF environment you are using to deliver a workshop with.</p>
+
+				</div><!-- /.container -->
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="admin">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#student-list" data-toggle="tab">Students</a></li>
+				<li><a href="#create-student" data-toggle="tab">Create a student</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="student-list">
+					<div class="panel panel-default">
+						<div class="panel-heading"><h3>Students</h3></div>
+						<div class="panel-body">
+							<table class="table table-striped">
+								<thead>
+								<tr>
+									<th>Student Email</th>
+									<th>Organization</th>
+									<th></th>
+								</tr>
+								</thead>
+								<tbody id="StudentList">
+								<tr>
+									<td>john@example.com</td>
+									<td>john-org</td>
+									<td><span class="glyphicon glyphicon-remove-circle" style="color:red"></span></td>
+								</tr>
+								<tr>
+									<td>mary@example.com</td>
+									<td>mary-org</td>
+									<td><span class="glyphicon glyphicon-remove-circle" style="color:red"></span></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="create-student">
+					<div class="panel panel-default">
+						<div class="panel-heading"><h3>Student Info</h3></div>
+						<div class="panel-body">
+							<label for="email">Student Email</label>
+							<input type="email" class="form-control" id="email">
+							<label for="password">Student Password</label>
+							<input type="password" class="form-control" id="password">
+							<label for="org">Student Org</label>
+							<input type="text" class="form-control" id="org">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="contact">
+			<div class="container">
+				<div class="page-header">
+					<h1>Questions?</h1>
+				</div>
+				<div>
+					If you have any questions, you can contact Chris DeLashmutt at @cdelashmutt on Slack, or <a href="mailto:cdelashmutt@pivotal.io">cdelashmutt@pivotal.io</a>.
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/react/react.min.js"></script>
+	<script src="bower_components/react/react-dom.min.js"></script>
+	<script>
+		class StudentRow extends React.Component {
+			render() {
+				return React.createElement("tr", null,
+					React.createElement("td", null, "johndoe@example.com"),
+					React.createElement("td", null, "john-org"),
+					React.createElement("td", null,
+						React.createElement("span", {className:"glyphicon glyphicon-remove-circle",style:{color:"red"}})
+					));
+			}
+		}
+
+		ReactDOM.render(
+			React.createElement(StudentRow, null, null),
+			document.getElementById('StudentList')
+		);
+	</script>
+</body>
+</html>

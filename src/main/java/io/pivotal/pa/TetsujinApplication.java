@@ -13,6 +13,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 
+/**
+ * Main application launch point
+ */
 @SuppressWarnings("WeakerAccess")
 @SpringBootApplication
 @EnableConfigurationProperties(CFProperties.class)
@@ -23,7 +26,6 @@ public class TetsujinApplication {
 	}
 
 	@Bean
-	@Lazy
 	DefaultConnectionContext connectionContext(@Autowired CFProperties properties) {
 		return DefaultConnectionContext.builder()
 				.apiHost(properties.getApiHost())
@@ -32,7 +34,6 @@ public class TetsujinApplication {
 	}
 
 	@Bean
-	@Lazy
 	PasswordGrantTokenProvider tokenProvider(@Autowired CFProperties properties) {
 		return PasswordGrantTokenProvider.builder()
 				.password(properties.getPassword())
@@ -41,7 +42,6 @@ public class TetsujinApplication {
 	}
 
 	@Bean
-	@Lazy
 	ReactorCloudFoundryClient cloudFoundryClient(ConnectionContext connectionContext, TokenProvider tokenProvider) {
 		return ReactorCloudFoundryClient.builder()
 				.connectionContext(connectionContext)
@@ -50,7 +50,6 @@ public class TetsujinApplication {
 	}
 
 	@Bean
-	@Lazy
 	ReactorUaaClient uaaClient(ConnectionContext connectionContext, TokenProvider tokenProvider) {
 		return ReactorUaaClient.builder()
 				.connectionContext(connectionContext)
