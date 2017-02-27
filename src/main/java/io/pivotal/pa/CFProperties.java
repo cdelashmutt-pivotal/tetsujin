@@ -13,6 +13,15 @@ public class CFProperties {
 	private String password;
 	private String apiHost;
 
+	public CFProperties() {
+	}
+
+	public CFProperties(String username, String password, String apiHost) {
+		this.username = username;
+		this.password = password;
+		this.apiHost = apiHost;
+	}
+
 	public String getUsername() {
 		return username;
 	}
